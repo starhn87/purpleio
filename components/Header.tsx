@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
+import Tabs from './Tabs'
 
 export default function Header() {
   return (
@@ -7,18 +7,7 @@ export default function Header() {
       <Head>
         <article>AWESOME FOOD STORE</article>
         <Container>
-          <List>
-            <Item>
-              <Link href={'/'}>
-                <a>Store</a>
-              </Link>
-            </Item>
-            <Item>
-              <Link href={'/about'}>
-                <a>About</a>
-              </Link>
-            </Item>
-          </List>
+          <Tabs />
         </Container>
       </Head>
     </Wrapper>
@@ -40,23 +29,4 @@ const Head = styled.header`
 
 const Container = styled.section`
   height: 100%;
-`
-
-const List = styled.ul`
-  display: flex;
-  height: 100%;
-`
-
-const Item = styled.li`
-  display: flex;
-  height: 100%;
-  align-items: center;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  & + & {
-    margin-left: 10px;
-  }
 `

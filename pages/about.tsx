@@ -5,15 +5,11 @@ import { Main } from 'pages'
 
 export default function about() {
   return (
-    <>
-      <Header />
-      <Main>
-        <Container>
-          <Title>퍼플아이오 과제입니다.</Title>
-        </Container>
-      </Main>
-      <Footer />
-    </>
+    <Main>
+      <Container>
+        <Title>퍼플아이오 과제입니다.</Title>
+      </Container>
+    </Main>
   )
 }
 

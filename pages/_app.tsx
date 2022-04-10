@@ -1,14 +1,14 @@
 import type { AppProps } from 'next/app'
 import { css, Global } from '@emotion/react'
 import Head from 'next/head'
+import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 const globalStyles = css`
   :root {
     --primary: #669cff;
     --blue: #5e72e4;
-    --sky: #e0f0ff;
-    --gray: #6c757d;
-    --lighter: #e9ecef;
   }
 
   * {
@@ -75,13 +75,30 @@ const globalStyles = css`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        staleTime: 60 * 1000, // 1분
+      },
+    },
+  })
+
   return (
     <>
       <Head>
         <title>퍼플아이오</title>
       </Head>
       <Global styles={globalStyles} />
-      <Component {...pageProps} />
+      <Header />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
+      <Footer />
     </>
   )
 }
