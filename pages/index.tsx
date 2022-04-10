@@ -1,8 +1,13 @@
 import styled from '@emotion/styled'
 import Footer from 'components/Footer'
 import Header from 'components/Header'
+import { useCallback, useState } from 'react'
+import { Dialog } from '@mui/material'
+import Detail from 'components/Detail'
+import { getList } from 'pages/api'
+import { useQuery } from 'react-query'
 
-interface IItem {
+export interface IItem {
   id: number
   name: string
   description: string
@@ -15,14 +20,30 @@ interface HomeProps {
 }
 
 export default function Home({ data }: HomeProps) {
+  const [clicked, setClicked] = useState(false)
+  const [clickedId, setClickedId] = useState<number | null>(null)
+  const { data: itmes } = useQuery(
+    ['items'],
+    async () => await (await getList()).data,
+    {
+      initialData: data,
+    }
+  )
+
+  const onClick = (id: number) => {
+    setClicked(true)
+    setClickedId(id)
+  }
+
+  const onClose = useCallback(() => setClicked(false), [])
+
   return (
     <>
-      <Header />
       <Main>
         <Container>
           <List>
-            {data.map((item) => (
-              <Item key={item.id}>
+            {itmes.map((item: IItem) => (
+              <Item key={item.id} onClick={() => onClick(item.id)}>
                 <Title>{item.name}</Title>
                 <img src={item.thumb} alt="썸네일" />
               </Item>
@@ -30,9 +51,21 @@ export default function Home({ data }: HomeProps) {
           </List>
         </Container>
       </Main>
-      <Footer />
+      <Dialog open={clicked} maxWidth="md" fullWidth={true}>
+        <Detail id={clickedId!} onClose={onClose} />
+      </Dialog>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const data = await (await getList()).data
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
 
 export const Main = styled.main`
@@ -61,13 +94,3 @@ const Title = styled.p`
   font-size: 18px;
   font-weight: 500;
 `
-
-export async function getServerSideProps() {
-  const data = await (await fetch('http://localhost:9000/stores')).json()
-
-  return {
-    props: {
-      data,
-    },
-  }
-}
