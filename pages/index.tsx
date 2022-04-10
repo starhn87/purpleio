@@ -1,7 +1,5 @@
+import { useCallback, useId, useState } from 'react'
 import styled from '@emotion/styled'
-import Footer from 'components/Footer'
-import Header from 'components/Header'
-import { useCallback, useState } from 'react'
 import { Dialog } from '@mui/material'
 import Detail from 'components/Detail'
 import { getList } from 'pages/api'
@@ -43,7 +41,7 @@ export default function Home({ data }: HomeProps) {
         <Container>
           <List>
             {itmes.map((item: IItem) => (
-              <Item key={item.id} onClick={() => onClick(item.id)}>
+              <Item key={useId()} onClick={() => onClick(item.id)}>
                 <Title>{item.name}</Title>
                 <img src={item.thumb} alt="썸네일" />
               </Item>

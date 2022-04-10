@@ -4,6 +4,8 @@ import Head from 'next/head'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
+import { Suspense } from 'react'
+import Loading from 'components/Loading'
 
 const globalStyles = css`
   :root {
@@ -95,7 +97,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Header />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          <Suspense fallback={<Loading />}>
+            <Component {...pageProps} />
+          </Suspense>
         </Hydrate>
       </QueryClientProvider>
       <Footer />

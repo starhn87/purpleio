@@ -1,6 +1,4 @@
 import styled from '@emotion/styled'
-import Footer from 'components/Footer'
-import Header from 'components/Header'
 import { Main } from 'pages'
 
 export default function about() {

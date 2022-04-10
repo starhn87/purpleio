@@ -3,7 +3,6 @@ import { getDetail } from 'pages/api'
 import { memo } from 'react'
 import { MdClose } from 'react-icons/md'
 import { useQuery } from 'react-query'
-import Loading from './Loading'
 
 interface DetailProps {
   onClose: () => void
@@ -11,16 +10,13 @@ interface DetailProps {
 }
 
 export default memo(function Detail({ id, onClose }: DetailProps) {
-  const { data: item, isFetched } = useQuery(
+  const { data: item } = useQuery(
     ['detail', id],
-    async () => await (await getDetail(id)).data
+    async () => await (await getDetail(id)).data,
+    {
+      suspense: true,
+    }
   )
-
-  if (!isFetched) {
-    return <Loading />
-  }
-
-  console.log(item)
 
   return (
     <Wrapper>
