@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { memo, useId, useState } from 'react'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 
@@ -18,7 +18,7 @@ const TABS = [
   },
 ]
 
-export default function Tabs() {
+function Tabs() {
   const router = useRouter()
   const [selectedTab, setSelectedTab] = useState(router.pathname)
 
@@ -41,6 +41,8 @@ export default function Tabs() {
     </List>
   )
 }
+
+export default memo(Tabs)
 
 const List = styled.ul`
   display: flex;
