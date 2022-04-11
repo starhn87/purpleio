@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { memo } from 'react'
 import Tabs from './Tabs'
 
-export default function Header() {
+export default memo(function Header() {
   return (
     <Wrapper>
       <Head>
@@ -12,7 +13,7 @@ export default function Header() {
       </Head>
     </Wrapper>
   )
-}
+})
 
 const Wrapper = styled.section`
   position: fixed;
