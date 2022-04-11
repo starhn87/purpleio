@@ -21,6 +21,8 @@
   - 음식점 아이템을 클릭하여 모달 안에서 상세정보를 볼 수 있습니다.
 - About 페이지
   - 프로젝트 설명을 확인할 수 있습니다.
+- 에러 페이지
+  - 유효하지 않은 경로 접근시 에러 페이지를 보여주고 5초 뒤 자동으로 메인 페이지로 이동합니다.
 
 <br>
 
@@ -30,19 +32,23 @@
 
 1-1. 메인 페이지
 
-<img src="https://user-images.githubusercontent.com/36434219/162666740-05dc6e85-3fc2-4fb6-9c01-77ab56acb7f9.png" alt="홈 페이지" width="700px" height="400px">
+<img src="https://user-images.githubusercontent.com/36434219/162666740-05dc6e85-3fc2-4fb6-9c01-77ab56acb7f9.png" alt="메인 페이지" width="700px" height="400px">
 
 <br>
 
 1-2. 상세정보 모달
 
-<img src="https://user-images.githubusercontent.com/36434219/162666857-c9b12949-f32b-4c79-b095-13ef4e8be0ee.png" alt="홈 페이지" width="700px" height="400px">
+<img src="https://user-images.githubusercontent.com/36434219/162666857-c9b12949-f32b-4c79-b095-13ef4e8be0ee.png" alt="상세정보 모달" width="700px" height="400px">
 
 <br>
 
 2. About 페이지
 
-<img src="https://user-images.githubusercontent.com/36434219/162667076-60f44fb0-1c10-4f64-b212-ad768dd05cbf.png" alt="전적 검색 페이지" width="700px" height="400px">
+<img src="https://user-images.githubusercontent.com/36434219/162667076-60f44fb0-1c10-4f64-b212-ad768dd05cbf.png" alt="about 페이지" width="700px" height="400px">
+
+3. 에러 페이지
+
+<img src="https://user-images.githubusercontent.com/36434219/162728056-395d649d-ee4d-4cd0-bec3-07d9a756a7f8.png" alt="에러 페이지" width="700px" height="400px">
 
 <br>
 <br>
