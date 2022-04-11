@@ -1,9 +1,12 @@
-import { useCallback, useId, useState } from 'react'
+import { Suspense, useCallback, useId, useState } from 'react'
 import styled from '@emotion/styled'
 import { Dialog } from '@mui/material'
 import Detail from 'components/Detail'
 import { getList } from 'pages/api'
 import { useQuery } from 'react-query'
+import Loading from 'components/Loading'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 export interface IItem {
   id: number
@@ -37,6 +40,7 @@ export default function Home({ data }: HomeProps) {
 
   return (
     <>
+      <Header />
       <Main>
         <Container>
           <List>
@@ -49,9 +53,18 @@ export default function Home({ data }: HomeProps) {
           </List>
         </Container>
       </Main>
-      <Dialog open={clicked} maxWidth="md" fullWidth={true}>
-        <Detail id={clickedId!} onClose={onClose} />
-      </Dialog>
+      <Footer />
+      <Suspense
+        fallback={
+          <Dialog open={true}>
+            <Loading />
+          </Dialog>
+        }
+      >
+        <Dialog open={clicked} maxWidth="md" fullWidth={true}>
+          <Detail id={clickedId!} onClose={onClose} />
+        </Dialog>
+      </Suspense>
     </>
   )
 }
