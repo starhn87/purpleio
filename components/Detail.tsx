@@ -63,17 +63,24 @@ const Container = styled.div`
 `
 
 const Title = styled.p`
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   font-size: 35px;
   font-weight: 500;
   text-align: center;
+
+  @media (max-width: 400px) {
+    font-size: 24px;
+  }
 `
 
 const Box = styled.div`
-  display: grid;
-  grid-template-columns: 40% 60%;
+  display: flex;
   justify-items: center;
   padding: 20px 0;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
 const Image = styled.img`
@@ -82,6 +89,10 @@ const Image = styled.img`
 
 const Desc = styled.p`
   white-space: pre-wrap;
+
+  @media (max-width: 700px) {
+    padding-top: 15px;
+  }
 `
 
 const AnchorWrapper = styled.div`

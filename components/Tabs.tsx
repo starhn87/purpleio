@@ -44,7 +44,14 @@ export default function Tabs() {
 
 const List = styled.ul`
   display: flex;
+  /* min-width: 150px; */
   height: 100%;
+
+  @media (max-width: 400px) {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 
 const Item = styled.li`
@@ -61,6 +68,11 @@ const Item = styled.li`
 
   & + & {
     margin-left: 10px;
+  }
+
+  @media (max-width: 400px) {
+    display: flex;
+    justify-content: center;
   }
 `
 

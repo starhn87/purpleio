@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
-import { useDeferredValue, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function error() {
   const [count, setCount] = useState(5)
@@ -16,7 +16,9 @@ export default function error() {
     }, 1000)
 
     return () => {
-      clearTimeout(timer)
+      if (timer) {
+        clearTimeout(timer)
+      }
     }
   }, [count])
 
@@ -36,12 +38,21 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const Title = styled.p`
+export const Title = styled.p`
+  margin-bottom: 10px;
   font-size: 28px;
   font-weight: bold;
+
+  @media (max-width: 400px) {
+    font-size: 22px;
+  }
 `
 
 const Message = styled.p`
   padding-top: 15px;
   font-size: 18px;
+
+  @media (max-width: 400px) {
+    font-size: 15px;
+  }
 `
