@@ -1,33 +1,26 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
+import { memo } from 'react'
+import Tabs from './Tabs'
 
-export default function Header() {
+export default memo(function Header() {
   return (
     <Wrapper>
       <Head>
-        <article>AWESOME FOOD STORE</article>
+        <Logo>AWESOME FOOD STORE</Logo>
         <Container>
-          <List>
-            <Item>
-              <Link href={'/'}>
-                <a>Store</a>
-              </Link>
-            </Item>
-            <Item>
-              <Link href={'/about'}>
-                <a>About</a>
-              </Link>
-            </Item>
-          </List>
+          <Tabs />
         </Container>
       </Head>
     </Wrapper>
   )
-}
+})
 
 const Wrapper = styled.section`
+  position: fixed;
   width: 100%;
+  min-width: 400px;
   height: 50px;
+  background-color: white;
 `
 
 const Head = styled.header`
@@ -38,25 +31,12 @@ const Head = styled.header`
   place-items: center;
 `
 
+const Logo = styled.article`
+  @media (max-width: 400px) {
+    display: none;
+  }
+`
+
 const Container = styled.section`
   height: 100%;
-`
-
-const List = styled.ul`
-  display: flex;
-  height: 100%;
-`
-
-const Item = styled.li`
-  display: flex;
-  height: 100%;
-  align-items: center;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  & + & {
-    margin-left: 10px;
-  }
 `
