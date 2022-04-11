@@ -2,8 +2,6 @@ import type { AppProps } from 'next/app'
 import { css, Global } from '@emotion/react'
 import Head from 'next/head'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
-import Header from 'components/Header'
-import Footer from 'components/Footer'
 
 const globalStyles = css`
   :root {
@@ -92,13 +90,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>퍼플아이오</title>
       </Head>
       <Global styles={globalStyles} />
-      <Header />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <Component {...pageProps} />
         </Hydrate>
       </QueryClientProvider>
-      <Footer />
     </>
   )
 }

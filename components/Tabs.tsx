@@ -1,7 +1,6 @@
+import { useId, useState } from 'react'
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
 interface ITab {
   name: string
@@ -32,7 +31,7 @@ export default function Tabs() {
     <List>
       {TABS.map((tab) => (
         <Item
-          key={tab.name}
+          key={useId()}
           className={`${selectedTab === tab.path ? 'active' : ''}`}
           onClick={() => onClick(tab.path)}
         >
