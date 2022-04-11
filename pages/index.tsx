@@ -80,8 +80,8 @@ export async function getStaticProps() {
 }
 
 export const Main = styled.main`
-  min-height: calc(100vh - 90px);
-  padding: 30px;
+  min-height: calc(100vh - 50px);
+  padding: 80px 30px 50px;
 `
 
 const Container = styled.section``
