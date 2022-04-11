@@ -8,8 +8,10 @@
 
 ```bash
   git clone https://github.com/starhn87/purpleio.git
-  npx json-server -p 9000 db.json
-  yarn dev
+  yarn install
+  npx json-server -p 9000 db.json # json-server 실행
+  yarn dev # Next 어플리케이션 실행
+  # http://localhost:3000 이동
 ```
 
 ## ✨ 주요 기능
